@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  chadtree = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/chadtree"
+  },
   ["coq.artifacts"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/coq.artifacts"

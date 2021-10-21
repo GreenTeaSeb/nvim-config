@@ -16,7 +16,7 @@ require('packer').startup(function()
 
     -- better highighting 
     use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
-    
+
     -- accessories
     use 'glepnir/dashboard-nvim'
     use 'windwp/nvim-autopairs'
@@ -36,6 +36,12 @@ require('packer').startup(function()
         'kdheepak/tabline.nvim',
         requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
       }
+    use{
+        'ms-jpq/chadtree',
+        branch = 'chad',
+        run = 'python3 -m chadtree deps' 
+    }
+
 end)
 
 require('plugins/configs')

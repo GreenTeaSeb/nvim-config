@@ -9,5 +9,6 @@ require('plugins/configs/lualine')
 require('plugins/configs/autopairs')
 require('plugins/configs/telescope')
 require('plugins/configs/color')
-
 require('plugins/configs/treesitter')
+
+require('plugins/configs/keybinds')
