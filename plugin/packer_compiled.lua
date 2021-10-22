@@ -85,9 +85,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
+  extensions = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/extensions"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/gruvbox"
+  },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
@@ -101,9 +109,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  ["material.vim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/material.vim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -152,6 +170,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

@@ -6,7 +6,9 @@ require('packer').startup(function()
     use 'onsails/lspkind-nvim'
     use 'kabouzeid/nvim-lspinstall'
     use 'glepnir/lspsaga.nvim'
-
+    use {
+  "ray-x/lsp_signature.nvim",
+}
     -- formatting
     use {'prettier/vim-prettier', run = 'yarn install'}
 
@@ -17,12 +19,27 @@ require('packer').startup(function()
     -- better highighting 
     use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
 
+    -- utilities
+    use {
+      "Nvchad/extensions",
+   }
+
+    use {
+      "norcalli/nvim-colorizer.lua",
+      event = "BufRead",
+   }
+
+    
     -- accessories
     use 'glepnir/dashboard-nvim'
     use 'windwp/nvim-autopairs'
     use 'kyazdani42/nvim-web-devicons'
     use 'tomasiser/vim-code-dark'
     use 'morhetz/gruvbox'
+    use {
+	'kaicataldo/material.vim',
+	branch = 'main'
+    }
     use 'dylanaraps/wal.vim'
     use {
         'hoob3rt/lualine.nvim',
