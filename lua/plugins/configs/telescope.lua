@@ -23,8 +23,8 @@ telescope.setup {
       layout_strategy = "horizontal",
       layout_config = {
          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
+            prompt_position = "bottom",
+            preview_width = 0.4,
             results_width = 0.8,
          },
          vertical = {
@@ -59,7 +59,7 @@ telescope.setup {
          -- the default case_mode is "smart_case"
       },
       media_files = {
-         filetypes = { "png", "webp", "jpg", "jpeg" },
+         filetypes = { "png", "webp", "jpg", "jpeg" , "mp4", "pdf","mkv","epub" },
          find_cmd = "rg", -- find command (defaults to `fd`)
       },
    },

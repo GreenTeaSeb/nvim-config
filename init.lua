@@ -15,7 +15,12 @@ vim.opt.smarttab = true
 vim.opt.softtabstop = 4
 vim.opt.completeopt='menu,menuone,noselect'
 vim.opt.ruler = true
-vim.opt.undolevels = 1000
-
+vim.opt.hidden = true
+vim.o.mouse ='a'
+vim.pumheight = 10
+vim.o.relativenumber = true
+vim.o.nu = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 require('plugins')

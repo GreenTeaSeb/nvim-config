@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/bufferline.nvim"
+  },
   chadtree = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/chadtree"
@@ -84,10 +88,6 @@ _G.packer_plugins = {
   ["dashboard-nvim"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
-  },
-  extensions = {
-    loaded = true,
-    path = "/home/seb/.local/share/nvim/site/pack/packer/start/extensions"
   },
   gruvbox = {
     loaded = true,
@@ -113,15 +113,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/material.vim"
   },
+  ["monokai.nvim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/monokai.nvim"
+  },
+  neoformat = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
-  ["nvim-colorizer.lua"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/seb/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-comment"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -147,9 +153,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
-  ["tabline.nvim"] = {
+  ["telescope-fzf-native.nvim"] = {
     loaded = true,
-    path = "/home/seb/.local/share/nvim/site/pack/packer/start/tabline.nvim"
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
+  },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -170,13 +180,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

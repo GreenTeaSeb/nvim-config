@@ -1,3 +1,3 @@
-vim.g.material_theme_style = 'darker'
+vim.opt.termguicolors = true
 vim.cmd([[
-colorscheme gruvbox]])
+colorscheme monokai_pro]])

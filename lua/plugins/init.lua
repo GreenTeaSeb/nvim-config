@@ -3,61 +3,53 @@ require('packer').startup(function()
 
     -- lsp
     use 'neovim/nvim-lspconfig'
-    use 'onsails/lspkind-nvim'
     use 'kabouzeid/nvim-lspinstall'
+    use 'onsails/lspkind-nvim'
+    use {"ray-x/lsp_signature.nvim"}
     use 'glepnir/lspsaga.nvim'
-    use {
-  "ray-x/lsp_signature.nvim",
-}
-    -- formatting
-    use {'prettier/vim-prettier', run = 'yarn install'}
 
     --  autocompletion 
+
     use {'ms-jpq/coq_nvim', branch = 'coq'}
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
-    -- better highighting 
-    use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
-
-    -- utilities
-    use {
-      "Nvchad/extensions",
-   }
-
-    use {
-      "norcalli/nvim-colorizer.lua",
-      event = "BufRead",
-   }
-
-    
-    -- accessories
-    use 'glepnir/dashboard-nvim'
+    -- formatting
+    use {'prettier/vim-prettier', run = 'yarn install'}
     use 'windwp/nvim-autopairs'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'tomasiser/vim-code-dark'
-    use 'morhetz/gruvbox'
+    use 'terrortylor/nvim-comment'
+    use 'sbdchd/neoformat'
+
+    -- better highighting 
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+    -- files browsing
+    use 'glepnir/dashboard-nvim'
     use {
-	'kaicataldo/material.vim',
-	branch = 'main'
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+
+            {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}, {
+                "nvim-telescope/telescope-media-files.nvim"
+            }
+
+        }
     }
-    use 'dylanaraps/wal.vim'
+    use {'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps'}
+
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/plenary.nvim'}}
-    }
-    use {
-        'kdheepak/tabline.nvim',
-        requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
-      }
-    use{
-        'ms-jpq/chadtree',
-        branch = 'chad',
-        run = 'python3 -m chadtree deps' 
-    }
+
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    -- accessories
+    use 'kyazdani42/nvim-web-devicons'
+    use 'tomasiser/vim-code-dark'
+    use 'morhetz/gruvbox'
+    use 'tanvirtin/monokai.nvim'
+    use {'kaicataldo/material.vim', branch = 'main'}
+    use 'dylanaraps/wal.vim'
 
 end)
 
