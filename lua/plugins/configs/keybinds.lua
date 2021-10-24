@@ -6,9 +6,10 @@
 -- end
 -- 
 vim.api.nvim_set_keymap('n', '<Tab>',  [[<Cmd>BufferLineCycleNext<cr>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>v',  [[<Cmd>CHADopen<cr>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Leader>v',  [[<Cmd>CHADopen<cr>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';', '<C-w>', {noremap = true, silent = true} )
 
-
+vim.api.nvim_set_keymap('n', '<S-CR>', '<m-enter>', {noremap = true, silent = true} )
 
 --vim.api.nvim_set_keymap('n', '<Leader>q',  close_buff(), { noremap = true, silent = true })
 vim.api.nvim_exec([[
