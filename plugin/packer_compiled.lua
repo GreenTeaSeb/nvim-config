@@ -125,6 +125,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
   ["nvim-comment"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/nvim-comment"
@@ -165,9 +169,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["vCoolor.vim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/vCoolor.vim"
+  },
   ["vim-code-dark"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/vim-code-dark"
+  },
+  ["vim-code-monokai"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/vim-code-monokai"
   },
   ["vim-prettier"] = {
     loaded = true,

@@ -5,7 +5,12 @@
 --     return [[echo ]].. n
 -- end
 -- 
+
+-- BUFFER
+
 vim.api.nvim_set_keymap('n', '<Tab>',  [[<Cmd>BufferLineCycleNext<cr>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<S-Tab>',  [[<Cmd>BufferLineCyclePrev<cr>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<Leader>v',  [[<Cmd>CHADopen<cr>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', ';', '<C-w>', {noremap = true, silent = true} )
 
@@ -22,3 +27,12 @@ vim.api.nvim_exec([[
     endfunction
     map <silent> <Leader>q :call Close()<CR>
     ]],false)
+
+-- lsp
+
+vim.api.nvim_set_keymap('n','K','<Cmd>Lspsaga hover_doc<CR>', {noremap=  true, silent = false})
+vim.api.nvim_set_keymap('n','t','<Cmd>Lspsaga open_floaterm<CR>', {noremap=  true, silent = false})
+vim.api.nvim_set_keymap('n','T','<Cmd>Lspsaga close_floaterm<CR>', {noremap=  true, silent = false})
+
+
+

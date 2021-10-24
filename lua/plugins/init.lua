@@ -48,9 +48,11 @@ require('packer').startup(function()
     use 'tomasiser/vim-code-dark'
     use 'morhetz/gruvbox'
     use 'tanvirtin/monokai.nvim'
+    use 'jam1garner/vim-code-monokai'
     use {'kaicataldo/material.vim', branch = 'main'}
     use 'dylanaraps/wal.vim'
-
+    use 'norcalli/nvim-colorizer.lua'
+    use'KabbAmine/vCoolor.vim'
 end)
 
 require('plugins/configs')
