@@ -32,7 +32,21 @@ vim.api.nvim_exec([[
 
 vim.api.nvim_set_keymap('n','K','<Cmd>Lspsaga hover_doc<CR>', {noremap=  true, silent = false})
 vim.api.nvim_set_keymap('n','t','<Cmd>Lspsaga open_floaterm<CR>', {noremap=  true, silent = false})
-vim.api.nvim_set_keymap('n','T','<Cmd>Lspsaga close_floaterm<CR>', {noremap=  true, silent = false})
+vim.api.nvim_set_keymap('n','T','<Cmdii>Lspsaga close_floaterm<CR>', {noremap=  true, silent = false})
 
+
+-- Dashboard
+
+
+vim.api.nvim_set_keymap('n','<Leader>ss','<Cmd>SessionSave<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>sl','<Cmd>SessionLoad<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>fh','<Cmd>DashboardFindHistory<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>ff','<Cmd>DashboardFindFile<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>fo','<Cmd>Telescope oldfiles<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>tc','<Cmd>DashboardChangeColorscheme<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>fa','<Cmd>DashboardFindWord<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>fb','<Cmd>DashboardJumpMark<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>cn','<Cmd>DashboardNewFile<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>k','<Cmd>Dashboard<CR>', {noremap=  true})
 
 
