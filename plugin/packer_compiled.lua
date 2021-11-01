@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["AnsiEsc.vim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/AnsiEsc.vim"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/bufferline.nvim"

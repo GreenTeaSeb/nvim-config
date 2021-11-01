@@ -53,6 +53,7 @@ require('packer').startup(function()
     use 'dylanaraps/wal.vim'
     use 'norcalli/nvim-colorizer.lua'
     use'KabbAmine/vCoolor.vim'
+    use 'vim-scripts/AnsiEsc.vim'
 end)
 
 require('plugins/configs')
