@@ -22,5 +22,5 @@ vim.o.relativenumber = true
 vim.o.nu = true
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.opt.clipboard='unnamedplus'
+
 require('plugins')
