@@ -50,8 +50,7 @@ vim.g.dashboard_preview_command = 'cat'
 vim.g.dashboard_preview_pipeline = 'lolcat -F 0.1 -t'
 vim.g.dashboard_preview_file = headers[math.random(1,#headers)] 
 vim.g.dashboard_preview_file_height = 9
-vim.g.dashboard_preview_file_width = 80
-
+vim.g.dashboard_preview_file_width = 120
 -- OLD HEADERS
 --
 --
