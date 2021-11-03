@@ -32,7 +32,10 @@ vim.api.nvim_exec([[
 
 vim.api.nvim_set_keymap('n','K','<Cmd>Lspsaga hover_doc<CR>', {noremap=  true, silent = false})
 vim.api.nvim_set_keymap('n','t','<Cmd>Lspsaga open_floaterm<CR>', {noremap=  true, silent = false})
-vim.api.nvim_set_keymap('n','T','<Cmdii>Lspsaga close_floaterm<CR>', {noremap=  true, silent = false})
+vim.api.nvim_set_keymap('n','T','<Cmd>Lspsaga close_floaterm<CR>', {noremap=  true, silent = false})
+vim.api.nvim_exec([[
+   tnoremap <Esc> <C-\><C-n><CR>]]
+   ,false)
 
 
 -- Dashboard

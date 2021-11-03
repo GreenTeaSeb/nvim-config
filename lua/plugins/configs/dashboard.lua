@@ -1,27 +1,27 @@
 vim.g.dashboard_default_executive = 'telescope'
 vim.g.dashboard_custom_section = {
     a = {
-        description = {"  Find File                 SPC f f"},
+        description = {"  Find File                 \\ f f"},
         command = "Telescope find_files"
     },
     b = {
-        description = {"  Recents                   SPC f o"},
+        description = {"  Recents                   \\ f o"},
         command = "Telescope oldfiles"
     },
     c = {
-        description = {"  Find Word                 SPC f w"},
+        description = {"  Find Word                 \\ f w"},
         command = "Telescope live_grep"
     },
     d = {
-        description = {"洛 New File                  SPC f n"},
+        description = {"洛 New File                  \\ f n"},
         command = "DashboardNewFile"
     },
     e = {
-        description = {"  Bookmarks                 SPC b m"},
+        description = {"  Bookmarks                 \\ b m"},
         command = "Telescope marks"
     },
     f = {
-        description = {"  Load Last Session         SPC l  "},
+        description = {"  Load Last Session         \\ l  "},
         command = "SessionLoad"
     }
 }
@@ -42,15 +42,14 @@ function dirLookup(dir)
 end
 dirLookup('/home/seb/.config/nvim/headers')
 
-
 math.randomseed(os.time())
 vim.g.dashboard_custom_footer = {footers[math.random(1, #footers)]};
 vim.g.dashboard_preview_pipeline = 'lolcat'
 vim.g.dashboard_preview_command = 'cat'
 vim.g.dashboard_preview_pipeline = 'lolcat -F 0.1 -t'
 vim.g.dashboard_preview_file = headers[math.random(1,#headers)] 
-vim.g.dashboard_preview_file_height = 9
-vim.g.dashboard_preview_file_width = 120
+vim.g.dashboard_preview_file_height = 10
+vim.g.dashboard_preview_file_width = 100
 -- OLD HEADERS
 --
 --
