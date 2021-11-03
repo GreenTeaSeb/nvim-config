@@ -49,7 +49,7 @@ vim.api.nvim_set_keymap('n','<Leader>fo','<Cmd>Telescope oldfiles<CR>', {noremap
 vim.api.nvim_set_keymap('n','<Leader>tc','<Cmd>DashboardChangeColorscheme<CR>', {noremap=  true})
 vim.api.nvim_set_keymap('n','<Leader>fa','<Cmd>DashboardFindWord<CR>', {noremap=  true})
 vim.api.nvim_set_keymap('n','<Leader>fb','<Cmd>DashboardJumpMark<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>cn','<Cmd>DashboardNewFile<CR>', {noremap=  true})
+vim.api.nvim_set_keymap('n','<Leader>fn','<Cmd>DashboardNewFile<CR>', {noremap=  true})
 vim.api.nvim_set_keymap('n','<Leader>k','<Cmd>Dashboard<CR>', {noremap=  true})
 
 

@@ -30,3 +30,14 @@ require("indent_blankline").setup {
     buftype_exclude = {"terminal"},
     filetype_exclude = {"dashboard"}
 }
+
+
+vim.api.nvim_exec([[
+    augroup fmt:
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+
+    let g:neoformat_basic_format_align = 1
+
+]] ,false)
