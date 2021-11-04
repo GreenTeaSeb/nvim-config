@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/home/seb/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/seb/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",

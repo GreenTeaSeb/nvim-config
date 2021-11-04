@@ -43,6 +43,9 @@ require('packer').startup(function()
     }
 
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    --languages
+    use 'rust-lang/rust.vim'
+
     -- accessories
     use 'kyazdani42/nvim-web-devicons'
     use 'lukas-reineke/indent-blankline.nvim'
