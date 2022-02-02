@@ -1,14 +1,11 @@
 require('lualine').setup({
 options = {
-  theme = 'auto',          -- lualine theme
-  component_separators = {left = '', right = ''},
-  section_separators = {left = '', right = ''},
+  theme = 'codedark',          -- lualine theme
+  -- component_separators = {left = '', right = ''},
+  -- section_separators = {left = '', right = ''},
   disabled_filetypes = {},  -- filetypes to diable lualine on
   always_divide_middle = true, -- When true left_sections (a,b,c) can't
-                               -- take over entiee statusline even
-                               -- when none of section x, y, z is present.
 }
-
 
 })
 
@@ -18,7 +15,6 @@ require("bufferline").setup{
         offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
         buffer_close_icon = "",
         modified_icon = "",
-        -- close_icon = "%@NvChad_bufferline_quitvim@%X",
         close_icon = "",
         show_close_icon = true,
         left_trunc_marker = "",

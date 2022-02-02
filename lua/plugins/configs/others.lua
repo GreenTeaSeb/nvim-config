@@ -7,18 +7,15 @@ require('nvim-autopairs').setup{
 require'colorizer'.setup({ "*" }, {
          RGB = true, -- #RGB hex codes
          RRGGBB = true, -- #RRGGBB hex codes
-	
          names = true, -- "Name" codes like Blue
          RRGGBBAA = true, -- #RRGGBBAA hex codes
          rgb_fn = true, -- CSS rgb() and rgba() functions
          hsl_fn = true, -- CSS hsl() and hsla() functions
          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-
          -- Available modes: foreground, background
          mode = "background", -- Set the display mode.
       })
--- vim.cmd "ColorizerReloadAllBuffers"
 
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
@@ -31,13 +28,10 @@ require("indent_blankline").setup {
     filetype_exclude = {"dashboard"}
 }
 
-
+-- 
 vim.api.nvim_exec([[
-    augroup fmt:
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
+    augroup fmt
+      autocmd!
+      au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
     augroup END
-
-    let g:neoformat_basic_format_align = 1
-
-]] ,false)
+    ]] ,false)

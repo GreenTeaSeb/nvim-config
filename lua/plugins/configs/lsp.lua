@@ -56,40 +56,11 @@ local function make_config()
 end
 
 -- lsp-install
-local function setup_servers()
-  require'lspinstall'.setup()
-
-  -- get all installed servers
-  local servers = require'lspinstall'.installed_servers()
-  -- ... and add manually installed servers
-  table.insert(servers, "clangd")
-  table.insert(servers, "sourcekit")
-
-  for _, server in pairs(servers) do
-    local config = make_config()
-
-    -- language specific config
-    if server == "lua" then
-      config.settings = lua_settings
-    end
-    if server == "sourcekit" then
-      config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
-    end
-    if server == "clangd" then
-      config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
-    end
-
-    require'lspconfig'[server].setup(config)
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    server:setup(opts)
+end)
 
 require('lspsaga').init_lsp_saga {
   error_sign = '',
@@ -99,51 +70,16 @@ require('lspsaga').init_lsp_saga {
   border_style = "round",
 }
 
-
 require('lspkind').init({
-    -- enables text annotations
-    --
-    -- default: true
     with_text = true,
-
     -- default symbol map
     -- can be either 'default' (requires nerd-fonts font) or
     -- 'codicons' for codicon preset (requires vscode-codicons font)
     --
     -- default: 'default'
     preset = 'codicons',
+ })
 
-    -- override preset symbols
-    --
-    -- default: {}
-    symbol_map = {
-      Text = "",
-      Method = "",
-      Function = "",
-      Constructor = "",
-      Field = "ﰠ",
-      Variable = "",
-      Class = "ﴯ",
-      Interface = "",
-      Module = "",
-      Property = "ﰠ",
-      Unit = "塞",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
-      TypeParameter = ""
-    },
-})
 require "lsp_signature".setup({
          bind = true,
          doc_lines = 0,
@@ -156,9 +92,55 @@ require "lsp_signature".setup({
          max_height = 22,
          max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
          handler_opts = {
-            border = "single", -- double, single, shadow, none
+            border = "rounded", -- double, single, shadow, none
          },
-         zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-         padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+         zindex = 50, -- by default it will be on top of all floating windows, set to 50 send it to bottom
+         padding = " ", -- character to pad on left and right of signature can be ' ', or '|'  etc
+floating_window_above_cur_line = true,
       })
 vim.cmd([[COQnow --shut-up ]])
+
+if vim.fn.has('nvim-0.5.1') == 1 then
+    vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+    vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+    vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+    vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+    vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+    vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+    vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+    vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+else
+    local bufnr = vim.api.nvim_buf_get_number(0)
+
+    vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
+        require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
+    end
+
+    vim.lsp.handlers['textDocument/references'] = function(_, _, result)
+        require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
+        require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
+        require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
+        require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
+        require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
+    end
+end

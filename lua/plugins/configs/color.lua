@@ -1,3 +1,4 @@
 vim.opt.termguicolors = true
-vim.cmd([[
-colorscheme monokai_pro]])
+require("github-theme").setup({
+  theme_style = "dark_default",
+})
