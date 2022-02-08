@@ -5,13 +5,10 @@ require('packer').startup(function()
     use 'onsails/lspkind-nvim'
     use 'williamboman/nvim-lsp-installer'
     use {"ray-x/lsp_signature.nvim"}
-    use 'glepnir/lspsaga.nvim'
-    use 'RishabhRD/popfix'
-    use 'RishabhRD/nvim-lsputils'
-    --  autocompletion 
+    use{'weilbith/nvim-code-action-menu', cmd='CodeActionMenu'}
+    --  autocompletion
     use {'ms-jpq/coq_nvim', branch = 'coq'}
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
-    use 'simrat39/rust-tools.nvim'
     use {
       "folke/which-key.nvim",
       config = function()
@@ -19,7 +16,7 @@ require('packer').startup(function()
 	}
       end
     }
-	-- formatting
+    -- formatting
     use {'prettier/vim-prettier', run = 'yarn install'}
     use 'windwp/nvim-autopairs'
     use 'terrortylor/nvim-comment'
@@ -49,8 +46,6 @@ require('packer').startup(function()
 
         }
     }
-    -- use {'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps'}
-    
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -75,14 +70,12 @@ require('packer').startup(function()
     use "projekt0n/github-nvim-theme"
 end)
 
+require("sidebar-nvim").setup({
+    open = true,
+    side = "left",
+    sections = { "files", "datetime", "git" },
+    section_separator = {"", "-----", ""},
+    todos = { ignored_paths = { "~" } },
+})
 
-	  require("sidebar-nvim").setup({
-		open = true,
-		side = "left",
-		sections = { "datetime", "git", "files" },
-		section_separator = {"", "-----", ""},
-		todos = { ignored_paths = { "~" } },
-	    })
-
-
-require('plugins/configs')
+ require('plugins/configs')
