@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/sveb/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/sveb/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/sveb/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/sveb/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/sveb/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
+local package_path_str = "/home/sveb/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/sveb/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/sveb/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/sveb/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/sveb/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["AnsiEsc.vim"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/AnsiEsc.vim",
-    url = "https://github.com/vim-scripts/AnsiEsc.vim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
@@ -88,11 +83,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/coq_nvim",
     url = "https://github.com/ms-jpq/coq_nvim"
-  },
-  ["dashboard-nvim"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
   },
   ["github-nvim-theme"] = {
     loaded = true,
@@ -109,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
+  lspactions = {
+    loaded = true,
+    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/lspactions",
+    url = "https://github.com/RishabhRD/lspactions"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -119,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/hoob3rt/lualine.nvim"
   },
-  ["material.vim"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/material.vim",
-    url = "https://github.com/kaicataldo/material.vim"
-  },
   neoformat = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/neoformat",
@@ -133,19 +123,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
-  },
-  ["nvim-code-action-menu"] = {
-    commands = { "CodeActionMenu" },
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
-    url = "https://github.com/weilbith/nvim-code-action-menu"
-  },
-  ["nvim-colorizer.lua"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-comment"] = {
     loaded = true,
@@ -161,6 +138,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
+    loaded = true,
+    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -182,6 +165,11 @@ _G.packer_plugins = {
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
+  },
   ["rust.vim"] = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/rust.vim",
@@ -197,11 +185,11 @@ _G.packer_plugins = {
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/scss-syntax.vim",
     url = "https://github.com/cakebaker/scss-syntax.vim"
   },
-  ["sidebar.nvim"] = {
-    config = { "\27LJ\1\2\v\0\0\1\0\0\0\1G\0\1\0\0" },
+  ["startup.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fstartup\frequire\0" },
     loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/sidebar.nvim",
-    url = "https://github.com/sidebar-nvim/sidebar.nvim"
+    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/startup.nvim",
+    url = "https://github.com/startup-nvim/startup.nvim"
   },
   ["suda.vim"] = {
     loaded = true,
@@ -223,38 +211,18 @@ _G.packer_plugins = {
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vCoolor.vim"] = {
+  ["vim-hexokinase"] = {
     loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vCoolor.vim",
-    url = "https://github.com/KabbAmine/vCoolor.vim"
-  },
-  ["vim-code-dark"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vim-code-dark",
-    url = "https://github.com/tomasiser/vim-code-dark"
-  },
-  ["vim-code-monokai"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vim-code-monokai",
-    url = "https://github.com/jam1garner/vim-code-monokai"
-  },
-  ["vim-horizon"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vim-horizon",
-    url = "https://github.com/ntk148v/vim-horizon"
+    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vim-hexokinase",
+    url = "https://github.com/RRethy/vim-hexokinase"
   },
   ["vim-prettier"] = {
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/vim-prettier",
     url = "https://github.com/prettier/vim-prettier"
   },
-  ["wal.vim"] = {
-    loaded = true,
-    path = "/home/sveb/.local/share/nvim/site/pack/packer/start/wal.vim",
-    url = "https://github.com/dylanaraps/wal.vim"
-  },
   ["which-key.nvim"] = {
-    config = { "\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14which-key\frequire\0" },
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
     path = "/home/sveb/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
@@ -271,24 +239,23 @@ time([[Defining packer_plugins]], false)
 time([[Runtimepath customization]], true)
 vim.o.runtimepath = vim.o.runtimepath .. ",/home/sveb/.local/share/nvim/site/pack/packer/start/sailfish/syntax/vim"
 time([[Runtimepath customization]], false)
--- Config for: sidebar.nvim
-time([[Config for sidebar.nvim]], true)
-try_loadstring("\27LJ\1\2\v\0\0\1\0\0\0\1G\0\1\0\0", "config", "sidebar.nvim")
-time([[Config for sidebar.nvim]], false)
+-- Config for: startup.nvim
+time([[Config for startup.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fstartup\frequire\0", "config", "startup.nvim")
+time([[Config for startup.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CodeActionMenu lua require("packer.load")({'nvim-code-action-menu'}, { cmd = "CodeActionMenu", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-time([[Defining lazy-load commands]], false)
-
 if should_profile then save_profiles() end
 
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

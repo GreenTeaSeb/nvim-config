@@ -1,35 +1,56 @@
-vim.api.nvim_set_keymap('n', '<Tab>',  [[<Cmd>BufferLineCycleNext<cr>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>',  [[<Cmd>BufferLineCyclePrev<cr>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<Leader>v',  [[<Cmd>SidebarNvimToggle<cr>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', ';', '<C-w>', {noremap = true, silent = true} )
-vim.api.nvim_set_keymap('n', '<S-CR>', '<m-enter>', {noremap = true, silent = true} )
---vim.api.nvim_set_keymap('n', '<Leader>q',  close_buff(), { noremap = true, silent = true })
-vim.api.nvim_exec([[
-    function! Close()
-	 if len(getbufinfo({'buflisted':1})) == 1
-	     :Dashboard
-	 else 
-	    :bd!
-	 endif
-    endfunction
-    map <silent> <Leader>q :call Close()<CR>
-    ]],false)
--- lsp
-vim.api.nvim_set_keymap('n','K','<Cmd>CodeActionMenu<CR>', {noremap=  true, silent = false})
+local opts = { noremap=true, silent=true }
+
+function _G.closeBuffer()
+  local treeView = require('nvim-tree.view')
+  local bufferline = require('bufferline')
+
+  -- check if NvimTree window was open
+  local explorerWindow = treeView.get_winnr()
+  local wasExplorerOpen = vim.api.nvim_win_is_valid(explorerWindow)
+
+  local bufferToDelete = vim.api.nvim_get_current_buf()
+
+  -- TODO: handle modified buffers
+  -- local isModified = vim.api.nvim_eval('getbufvar(' .. bufferToDelete .. ', "&mod")')
+
+  if (wasExplorerOpen) then
+    -- switch to previous buffer (tracked by bufferline)
+    bufferline.cycle(-1)
+  end
+
+  -- delete initially open buffer
+  vim.cmd('bdelete! ' .. bufferToDelete)
+end
+
+
+vim.api.nvim_set_keymap('n', '<Tab>',  [[<Cmd>BufferLineCycleNext<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<S-Tab>',  [[<Cmd>BufferLineCyclePrev<cr>]], opts)
+vim.api.nvim_set_keymap('', '<Leader>v',  [[<Cmd>NvimTreeToggle<cr>]], opts)
+vim.api.nvim_set_keymap('n', ';', '<C-w>', opts )
+vim.api.nvim_set_keymap('n', '<S-CR>', '<m-enter>', opts )
+vim.api.nvim_set_keymap('n', '<Leader>q',':lua closeBuffer()<cr>', opts)
+
+-- moving between panels with alt+hjkl
+ 
+vim.api.nvim_set_keymap('t', '<A-h>',[[<C-\><C-n><C-w>h]], opts)
+vim.api.nvim_set_keymap('t', '<A-j>',[[<C-\><C-n><C-w>j]], opts)
+vim.api.nvim_set_keymap('t', '<A-k>',[[<C-\><C-n><C-w>k]], opts)
+vim.api.nvim_set_keymap('t', '<A-l>',[[<C-\><C-n><C-w>l]], opts)
+
+vim.api.nvim_set_keymap('n', '<A-h>',[[<C-w>h]], opts)
+vim.api.nvim_set_keymap('n', '<A-j>',[[<C-w>j]], opts)
+vim.api.nvim_set_keymap('n', '<A-k>',[[<C-w>k]], opts)
+vim.api.nvim_set_keymap('n', '<A-l>',[[<C-w>l]], opts)
 
 vim.api.nvim_exec([[
    tnoremap <Esc> <C-\><C-n><CR>]]
    ,false)
--- Dashboard
-vim.api.nvim_set_keymap('n','<Leader>ss','<Cmd>SessionSave<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>sl','<Cmd>SessionLoad<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>fh','<Cmd>DashboardFindHistory<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>ff','<Cmd>DashboardFindFile<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>fo','<Cmd>Telescope oldfiles<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>tc','<Cmd>DashboardChangeColorscheme<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>fa','<Cmd>DashboardFindWord<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>fb','<Cmd>DashboardJumpMark<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>fn','<Cmd>DashboardNewFile<CR>', {noremap=  true})
-vim.api.nvim_set_keymap('n','<Leader>k','<Cmd>Dashboard<CR>', {noremap=  true})
 
-
+-- LSP
+vim.lsp.handlers["textDocument/codeAction"] = require'lspactions'.codeaction
+vim.lsp.handlers["textDocument/declaration"] = require'lspactions'.declaration
+-- rename
+vim.api.nvim_set_keymap('n', '<Leader>ar',  [[<Cmd>lua require'lspactions'.rename()<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.range_code_action()<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.code_action()<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.code_action()<cr>]], opts)

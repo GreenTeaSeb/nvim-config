@@ -1,11 +1,15 @@
 require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     -- lsp
-    use 'neovim/nvim-lspconfig'
-    use 'onsails/lspkind-nvim'
-    use 'williamboman/nvim-lsp-installer'
-    use {"ray-x/lsp_signature.nvim"}
-    use{'weilbith/nvim-code-action-menu', cmd='CodeActionMenu'}
+    use {
+    'neovim/nvim-lspconfig',
+     'onsails/lspkind-nvim',
+     'williamboman/nvim-lsp-installer',
+     "ray-x/lsp_signature.nvim",
+     'nvim-lua/plenary.nvim',
+     'nvim-lua/popup.nvim',
+     'RishabhRD/lspactions'
+    }
     --  autocompletion
     use {'ms-jpq/coq_nvim', branch = 'coq'}
     use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
@@ -23,18 +27,20 @@ require('packer').startup(function()
     use 'elkowar/yuck.vim'
     use 'cakebaker/scss-syntax.vim'
     use 'sbdchd/neoformat'
+    -- use "lukas-reineke/lsp-format.nvim"
     use {'Kogia-sima/sailfish',  rtp= 'syntax/vim' }
 
     -- better highighting
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- files browsing
-    use 'glepnir/dashboard-nvim'
-    use {
-	"sidebar-nvim/sidebar.nvim",
-	config = function ()
-	end
-    }
+	use {
+	  "startup-nvim/startup.nvim",
+	  requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+	  config = function()
+	    require"startup".setup()
+	  end
+	}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -50,32 +56,24 @@ require('packer').startup(function()
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'nvim-tree'.setup {} end
+    }
     --languages
     use 'rust-lang/rust.vim'
     -- accessories
     use 'kyazdani42/nvim-web-devicons'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'lambdalisue/suda.vim'
+    use	{'RRethy/vim-hexokinase',  run = 'cd ~/.local/share/nvim/site/pack/packer/start/vim-hexokinase && make hexokinase'}
+
     -- color
-    use 'tomasiser/vim-code-dark'
-    use 'jam1garner/vim-code-monokai'
-    use {'kaicataldo/material.vim', branch = 'main'}
-    use 'dylanaraps/wal.vim'
-    use 'norcalli/nvim-colorizer.lua'
-    use'KabbAmine/vCoolor.vim'
-    use 'vim-scripts/AnsiEsc.vim'
-    use 'ntk148v/vim-horizon'
     use "projekt0n/github-nvim-theme"
 end)
-
-require("sidebar-nvim").setup({
-    open = true,
-    side = "left",
-    sections = { "files", "datetime", "git" },
-    section_separator = {"", "-----", ""},
-    todos = { ignored_paths = { "~" } },
-})
 
  require('plugins/configs')

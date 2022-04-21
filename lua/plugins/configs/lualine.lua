@@ -5,8 +5,8 @@ options = {
   -- section_separators = {left = '', right = ''},
   disabled_filetypes = {},  -- filetypes to diable lualine on
   always_divide_middle = true, -- When true left_sections (a,b,c) can't
+  globalstatus = true,
 }
-
 })
 
 
@@ -26,7 +26,7 @@ require("bufferline").setup{
         enforce_regular_tabs = false,
         view = "multiwindow",
         show_buffer_close_icons = true,
-        separator_style = "thin",
+        separator_style = "slant",
         always_show_bufferline = true,
         diagnostics = false, -- "or nvim_lsp"
         custom_filter = function(buf_number)
