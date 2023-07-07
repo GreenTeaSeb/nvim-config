@@ -2,13 +2,14 @@ require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     -- lsp
     use {
-    'neovim/nvim-lspconfig',
+     'neovim/nvim-lspconfig',
      'onsails/lspkind-nvim',
      'williamboman/nvim-lsp-installer',
      "ray-x/lsp_signature.nvim",
-     'nvim-lua/plenary.nvim',
-     'nvim-lua/popup.nvim',
-     'RishabhRD/lspactions'
+    }
+    use{
+      'weilbith/nvim-code-action-menu',
+      cmd = 'CodeActionMenu',
     }
     --  autocompletion
     use {'ms-jpq/coq_nvim', branch = 'coq'}
@@ -34,7 +35,7 @@ require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- files browsing
-	use {
+    use {
 	  "startup-nvim/startup.nvim",
 	  requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
 	  config = function()
@@ -59,9 +60,9 @@ require('packer').startup(function()
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {
     'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
+	requires = {
+	    'kyazdani42/nvim-web-devicons', -- optional, for file icon
+	 },
     config = function() require'nvim-tree'.setup {} end
     }
     --languages
@@ -70,10 +71,14 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'lambdalisue/suda.vim'
-    use	{'RRethy/vim-hexokinase',  run = 'cd ~/.local/share/nvim/site/pack/packer/start/vim-hexokinase && make hexokinase'}
-
-    -- color
+    use {'rrethy/vim-hexokinase', run = 'cd ~/.local/share/nvim/site/pack/packer/start/vim-hexokinase && make hexokinase'}
+    use {'karb94/neoscroll.nvim',
+    	config = function()
+	require('neoscroll').setup()	
+	end
+    }
+	-- color
+    use 'Mofiqul/vscode.nvim'
     use "projekt0n/github-nvim-theme"
 end)
-
- require('plugins/configs')
+require('plugins/configs')

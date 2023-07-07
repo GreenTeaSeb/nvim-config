@@ -40,8 +40,8 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 require('lspkind').init({ 
-    mode = 'symbol_text',
-    preset = 'codicons',
+	mode = 'symbol_text',
+	preset = 'codicons',
  })
 
 require "lsp_signature".setup({

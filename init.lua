@@ -24,5 +24,8 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.opt.clipboard='unnamedplus'
 vim.o.laststatus=3
+vim.opt.foldmethod='expr'
+vim.opt.foldexpr='nvim_treesitter#foldexpr()'
+vim.opt.foldlevelstart=99
 require('plugins')
 

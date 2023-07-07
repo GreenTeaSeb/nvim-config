@@ -46,11 +46,6 @@ vim.api.nvim_exec([[
    tnoremap <Esc> <C-\><C-n><CR>]]
    ,false)
 
--- LSP
-vim.lsp.handlers["textDocument/codeAction"] = require'lspactions'.codeaction
-vim.lsp.handlers["textDocument/declaration"] = require'lspactions'.declaration
--- rename
-vim.api.nvim_set_keymap('n', '<Leader>ar',  [[<Cmd>lua require'lspactions'.rename()<cr>]], opts)
-vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.range_code_action()<cr>]], opts)
-vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.code_action()<cr>]], opts)
-vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>lua require'lspactions'.code_action()<cr>]], opts)
+
+vim.api.nvim_set_keymap('n', '<Leader>ar',  [[<Cmd>lua vim.lsp.buf.code_action()<cr>]], opts)
+vim.api.nvim_set_keymap('n', '<Leader>af',  [[<Cmd>CodeActionMenu<cr>]], opts)
